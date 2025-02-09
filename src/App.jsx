@@ -7,11 +7,11 @@ import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 
 // Importing the option components
-import Home from './components/optionpages/home.jsx';
-import About from './components/optionpages/about.jsx';
-import Organisation from './components/optionpages/organisation.jsx';
+import Home from './components/optionPages/home.jsx';
+import About from './components/optionPages/about.jsx';
+import Organisation from './components/optionPages/organisation.jsx';
 import Events from './components/optionPages/Events.jsx';
-import Startup from './components/optionpages/startup.jsx';
+import Startup from './components/optionPages/startup.jsx';
 
 function App() {
   // Getting state and options from mid.jsx
