@@ -3,92 +3,118 @@ import { Box, Container, Heading, Text, SimpleGrid, Image, Button, Stack, useCol
 
 const events = [
   {
-    title: 'Tech Innovators Conference 2025',
-    date: 'March 15, 2025',
-    description: 'Join industry leaders to explore the latest in technology and innovation.',
-    image: '#',
+    title: 'Bitblitz 1.0',
+    date: 'March 18, 2024',
+    description: 'description.',
+    image: 'src/assets/Register.jpg',
     link: '/events/tech-innovators-2025',
   },
   {
-    title: 'Creative Design Summit',
-    date: 'April 20, 2025',
-    description: 'A gathering of creative minds discussing the future of design.',
-    image: 'https://example.com/design-summit.jpg',
-    link: '/events/creative-design-summit',
+    title: 'Waste to Wealth',
+    date: 'March 5, 2025',
+    description: 'description.',
+    image: 'src/assets/Register.jpg',
+    link: '/events/tech-innovators-2025',
   },
   {
-    title: 'Global Marketing Expo',
-    date: 'May 10, 2025',
-    description: 'Discover cutting-edge marketing strategies and trends.',
-    image: 'https://example.com/marketing-expo.jpg',
-    link: '/events/global-marketing-expo',
+    title: 'Bitblit 2.0',
+    date: 'March 6, 2025',
+    description: 'description.',
+    image: 'src/assets/Register.jpg',
+    link: '/events/tech-innovators-2025',
   },
-  // Add more events as needed
 ];
 
 const Events = () => {
-  // Define background and text colors based on the current color mode
   const bgColor = useColorModeValue('gray.50', 'gray.800');
   const textColor = useColorModeValue('gray.800', 'gray.50');
   const cardBgColor = useColorModeValue('white', 'gray.700');
   const cardShadow = useColorModeValue('lg', 'dark-lg');
 
+  const isPastDate = (dateString) => {
+    const eventDate = new Date(dateString);
+    const today = new Date();
+    return eventDate < today;
+  };
+
   return (
     <Box py={10} bg={bgColor}>
-      <Container maxW="7xl" centerContent>
+      <Container maxW="80%" centerContent>
         <Heading as="h1" size="2xl" mb={6} textAlign="center" color={textColor}>
           Upcoming Events
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 2 }} spacing={20}>
-          {events.map((event, index) => (
-            <Box
-              key={index}
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              boxShadow={cardShadow}
-              bg={cardBgColor}
-              transition="transform 0.3s ease-in-out"
-              _hover={{ transform: 'scale(1.05)' }}
-            >
-              <Image src={event.image} alt={event.title} objectFit="cover" />
-              <Box p={5}>
-                <Heading as="h3" size="lg" mb={2} color={textColor}>
-                  {event.title}
-                </Heading>
-                <Text fontSize="md" color="gray.500" mb={4}>
-                  {event.date}
-                </Text>
-                <Text fontSize="sm" color={textColor} mb={4}>
-                  {event.description}
-                </Text>
-                <Stack direction="row" spacing={4} justify="center">
-                  <Button
-                    as="a"
-                    href={event.link}
-                    colorScheme="teal"
-                    variant="solid"
-                    size="sm"
-                    w="full"
-                    _hover={{ bg: 'teal.600' }}
-                  >
-                    Learn More
-                  </Button>
-                  <Button
-                    as="a"
-                    href={event.link}
-                    colorScheme="teal"
-                    variant="outline"
-                    size="sm"
-                    w="full"
-                    _hover={{ borderColor: 'teal.600', color: 'teal.600' }}
-                  >
-                    Register Now
-                  </Button>
-                </Stack>
+        <SimpleGrid columns={1} spacing={10} w="100%">
+          {events.map((event, index) => {
+            const isPastEvent = isPastDate(event.date);
+            
+            return (
+              <Box
+                key={index}
+                h="600px"
+                w="100%"
+                borderWidth="1px"
+                borderRadius="lg"
+                overflow="hidden"
+                boxShadow={cardShadow}
+                bg={cardBgColor}
+                transition="transform 0.3s ease-in-out"
+                _hover={{ transform: 'scale(1.05)' }}
+                position="relative"
+              >
+                <Image 
+                  src={event.image} 
+                  alt={event.title} 
+                  objectFit="cover"
+                  height="50%"
+                  width="100%"
+                />
+                <Box p={5} height="50%">
+                  <Heading as="h3" size="lg" mb={2} color={textColor}>
+                    {event.title}
+                  </Heading>
+                  <Text fontSize="md" color="gray.500" mb={4}>
+                    {event.date}
+                  </Text>
+                  <Text fontSize="sm" color={textColor} mb={4}>
+                    {event.description}
+                  </Text>
+                  <Stack direction="row" spacing={4} justify="center">
+                    <Button
+                      as="a"
+                      href={event.link}
+                      colorScheme={isPastEvent ? 'gray' : 'teal'}
+                      variant={isPastEvent ? 'ghost' : 'solid'}
+                      size="sm"
+                      w="full"
+                      isDisabled={isPastEvent}
+                      _hover={!isPastEvent ? { 
+                        borderColor: 'teal.600', 
+                        color: 'teal.600' 
+                      } : undefined}
+                    >
+                       {isPastEvent ? 'Closed' : 'Whatapps'
+                      }
+                    </Button>
+                    <Button
+                      as="a"
+                      href={event.link}
+                      colorScheme={isPastEvent ? 'gray' : 'teal'}
+                      variant={isPastEvent ? 'ghost' : 'outline'}
+                      size="sm"
+                      w="full"
+                      isDisabled={isPastEvent}
+                      _hover={!isPastEvent ? { 
+                        borderColor: 'teal.600', 
+                        color: 'teal.600' 
+                      } : undefined}
+                    >
+                      {isPastEvent ? 'Registration Closed' : 'Register Now'}
+                    </Button>
+                  </Stack>
+                </Box>
               </Box>
-            </Box>
-          ))}
+            )
+          })}
         </SimpleGrid>
       </Container>
     </Box>
