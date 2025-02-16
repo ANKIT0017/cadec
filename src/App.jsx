@@ -7,11 +7,11 @@ import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 
 // Importing the option components
-import Home from './components/optionPages/Home.jsx';
-import About from './components/optionPages/About.jsx';
-import Organisation from './components/optionPages/organisation.jsx';
+import Home from './components/optionPages/HomePage.jsx';
+import About from './components/optionPages/AboutCadec.jsx';
+import Organisation from './components/optionPages/Structure.jsx';
 import Events from './components/optionPages/Events.jsx';
-import Startup from './components/optionPages/Startup.jsx';
+import Startup from './components/optionPages/Startup.js';
 
 function App() {
   // Getting state and options from mid.jsx
