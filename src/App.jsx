@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 // Importing the option components
 import Home from './components/optionPages/Home.jsx';
 import About from './components/optionPages/About.jsx';
-import Organisation from 'frontend/src/components/optionPages/Organisation.jsx';
+import Organisation from './components/optionPages/organisation.jsx';
 import Events from './components/optionPages/Events.jsx';
 import Startup from './components/optionPages/Startup.jsx';
 
