@@ -1,42 +1,113 @@
 import React from 'react';
-import { Box, Container, Flex, Heading, Text, Image, Stack, Button } from '@chakra-ui/react';
+import { Container, Box, Text, SimpleGrid, Badge, List, ListItem, ListIcon, Image, HStack } from '@chakra-ui/react';
+import { MdCheckCircle } from 'react-icons/md';
+import ProgressBar from '../ProgressBar';
 
-function About() {
+const About = () => {
+  // Data for departments and their members
+  const departments = [
+    {
+      name: 'Tech. Department',
+      leader: '.',
+      coleader: '.',
+      members: ['Ankit kumar', 'B', 'C'],
+      image: '/tech-department.jpg',  // Image specific to Tech Department
+    },
+    {
+      name: 'Media Department',
+      leader: 'Em',
+      coleader: 'Mic',
+      members: ['Soon', 'Dark', 'Olinez'],
+      image: '/media-department.jpg', // Image specific to Media Department
+    },
+    {
+      name: 'Advertising Department',
+      leader: 'Willris',
+      coleader: 'Isng',
+      members: ['Liee', 'Masonez', 'Lucg'],
+      image: '/advertising-department.jpg', // Image specific to Advertising Department
+    },
+    {
+      name: 'Event Management Department',
+      leader: 'Graor',
+      coleader: 'Sinson',
+      members: ['Acott', 'Noaez', 'Amell'],
+      image: '/event-management-department.jpg', // Image specific to Event Management Department
+    },
+  ];
+
   return (
-    <Container maxW="container.xl" py={12} mr={4}>
-      <Flex direction={{ base: 'column', md: 'row' }} align="center" justify="space-between">
-        {/* Left Section */}
-        <Box flex="1" pr={{ base: 0, md: 8 }}>
-          <Image
-            src="https://via.placeholder.com/600x400"
-            alt="About Us"
-            borderRadius="md"
-            boxSize="100%"
-            objectFit="cover"
-            shadow="lg"
-          />
-        </Box>
+    <Container maxW="1200px" mt={8} p={5}>
+      <ProgressBar/>
+      {/* About Society Header */}
+      <Box mb={10} >
+        <Text fontSize="4xl" fontWeight="bold" textAlign="center" color="teal.300">
+          About Our Society
+        </Text>
+        <Text mt={4} fontSize="lg" textAlign="center" color="gray.400">
+          We have various departments that work together to create an engaging, vibrant, and active society. Here's a look at our departments and their teams.
+        </Text>
+      </Box>
 
-        {/* Right Section */}
-        <Box flex="1" pl={{ base: 0, md: 8 }} mt={{ base: 8, md: 0 }}>
-          <Heading as="h2" size="xl" mb={4}>
-            About Our Society
-          </Heading>
-          <Text fontSize="lg" mb={6} mr={4}>
-            We are a leading Society in the jdhsckushdiuhiud riuh eiruh guisiu uegrhiu shfaeiluhfr iu erf uierf ueyuf yuegrfiuh euaf yuaegfyugs uc ui iflsuefvuyksvyu geuy gkwuay gkyu ykaew zvj hdb es bfvbeyu sfyue yufeg ufyageurg.
-          </Text>
-          <Stack direction="row" spacing={4}>
-            <Button colorScheme="teal" variant="solid">
-              Learn More
-            </Button>
-            <Button colorScheme="teal" variant="outline">
-              Contact Us
-            </Button>
-          </Stack>
-        </Box>
-      </Flex>
+      {/* Departments Section */}
+      <SimpleGrid columns={[1, 1, 1]} spacing={8}>
+        {departments.map((department, index) => (
+          <Box
+            key={index}
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            borderRadius="md"
+            bg="gray.800"  // Dark background for department boxes
+            _hover={{ bg: 'gray.700' }} // Hover effect
+            transition="0.3s ease-in-out"
+            minW={12}
+          >
+            <Text fontSize="2xl" fontWeight="bold" color="teal.400">
+              {department.name}
+            </Text>
+
+            {/* Department Image */}
+            <Box h="200px" mb={4}>
+              <Image
+                borderRadius="8px"
+                width="100%"
+                height="100%"
+                src={department.image}  // Using the department-specific image
+                alt={`${department.name} Image`}
+                objectFit="cover"
+              />
+            </Box>
+
+            {/* Department Leaders and Co-leaders */}
+            <Box mt={4}>
+              <Text fontWeight="semibold" color="gray.100">
+                Leader: <Badge colorScheme="teal">{department.leader}</Badge>
+              </Text>
+              <Text fontWeight="semibold" color="gray.100">
+                Co-leader: <Badge colorScheme="teal">{department.coleader}</Badge>
+              </Text>
+            </Box>
+
+            {/* Department Members */}
+            <Box mt={4}>
+              <Text fontWeight="semibold" color="gray.100">Members:</Text>
+              <List spacing={2}>
+                {department.members.map((member, index) => (
+                  <ListItem key={index}>
+                    <HStack>
+                      <ListIcon as={MdCheckCircle} color="teal.500" />
+                      <Text color="gray.100">{member}</Text> {/* Added color to the member names */}
+                    </HStack>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Box>
+        ))}
+      </SimpleGrid>
     </Container>
   );
-}
+};
 
 export default About;
