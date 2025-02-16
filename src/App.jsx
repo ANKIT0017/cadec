@@ -11,7 +11,7 @@ import Home from './components/optionPages/HomePage.jsx';
 import About from './components/optionPages/AboutCadec.jsx';
 import Organisation from './components/optionPages/Structure.jsx';
 import Events from './components/optionPages/Events.jsx';
-import Startup from './components/optionPages/Startup.js';
+import Startup from './components/optionPages/Startup.jsx';
 
 function App() {
   // Getting state and options from mid.jsx
