@@ -24,12 +24,15 @@ const Home = () => {
 
         {/* Mission and Vision */}
         <Box mb={10} mr={8}>
-          <Text fontSize="2xl" fontWeight="bold">Mission & Vision</Text>
+          <Text fontSize="2xl" fontWeight="bold">Principal or convenors</Text>
           <Text mt={4}>
             Our mission is to foster a vibrant and inclusive community that encourages collaboration, creativity, and leadership among students. 
             Our vision is to create a space where students feel empowered to express their ideas and passions through various activities and initiatives.
           </Text>
         </Box>
+
+        {/** P*/}
+        
 
         {/* Gallery Section */}
         <Box mb={10}mr={4}>
@@ -43,7 +46,7 @@ const Home = () => {
               <Image
                 borderRadius="5%"   // This makes the image circular
                 boxSize="100%"       // Adjust size to your preference
-                src="/me.jpg"  // Example image of the society's logo
+                src="/nikhil.jpg"  // Example image of the society's logo
                 alt="Society Logo"
                 objectFit="fill"     // Ensures the image covers the area within the circle
               />

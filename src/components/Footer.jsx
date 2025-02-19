@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Text, HStack, Link, Icon, SimpleGrid } from '@chakra-ui/react';
+import { Box, Text, HStack, Link, Icon, SimpleGrid, VStack } from '@chakra-ui/react';
 import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';  // Import additional icons for social media
 
 const Footer = () => {
   return (
     <Box bg="gray.800" color="white" py={6} w="100%">
+      <VStack>
       <SimpleGrid columns={[1, 1, 3]} spacing={10} maxW="2200px" mx="auto" px={4}>
         {/* Contact Us Section */}
         <Box>
@@ -45,10 +46,12 @@ const Footer = () => {
           </HStack>
         </Box>
 
-        {/* Additional Info Section */}
-        <Box w="100%">
+        
+      </SimpleGrid>
+      {/* Additional Info Section */}
+      <Box w="100%">
           <Text
-            fontSize={{ base: "7", sm: "7" }}
+            fontSize={{ base: "10", sm: "10" }}
             fontWeight="bold"
             textTransform="uppercase"
             bgGradient="linear(to-r, orange.500, red.700)"
@@ -58,7 +61,7 @@ const Footer = () => {
             Career Development Center
           </Text>
         </Box>
-      </SimpleGrid>
+      </VStack>
     </Box>
   );
 };

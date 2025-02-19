@@ -21,7 +21,7 @@ const NavBar = () => {
         }}
       >
         {/* Logo */}
-        <Image src="/logo.png" alt="Logo" boxSize={{ base: "30px", sm: "50px" }}pt={1} objectFit="cover" />
+        <Image src="/logosvg.svg" alt="Logo" boxSize={{ base: "30px", sm: "50px" }}pt={1} objectFit="cover" />
 
         {/* Typewriter effect text */}
         <Text

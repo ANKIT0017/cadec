@@ -14,7 +14,7 @@ export const useAppState = () => {
     },
     about: {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReqXUWHhvgS_uCZR1vCu0jYrGiSS_5OahAeA&s', // replace with actual image URLs
-      description: 'Learn more about our company, its mission, and our values.',
+      description: 'Learn more about our society, its mission, and our values.',
       heading: "About CADEC",
     },
     organisation: {
