@@ -21,18 +21,23 @@ const NavBar = () => {
         }}
       >
         {/* Logo */}
-        <Image src="/logo.png" alt="Logo" boxSize={{ base: "30px", sm: "50px" }}pt={1} objectFit="cover" />
+
+        <Image src="src/assets/logosvg.svg" alt="Logo" boxSize={{ base: "30px", sm: "50px" }}pt={1} objectFit="fill" />
+
+
 
         {/* Typewriter effect text */}
         <Text
-          fontSize={{ base: "44", sm: "70" }}
-          fontWeight={"bold"}
-          textTransform={"uppercase"}
-        //   textAlign={"center"}
-          bgGradient={"linear(to-r, orange.500, red.700)"}
-          bgClip={"text"}
-        >
-          cadec
+              fontSize={{ base: "18px", sm: "30px", md: "45px" }} // Decrease size on small screens
+              fontWeight="bold"
+              textTransform="uppercase"
+              bgGradient="linear(to-r, orange.500, red.700)"
+              bgClip="text"
+              whiteSpace="nowrap" // Prevent text from wrapping
+              maxWidth={{ base: "90%", sm: "100%" }} // Restrict width on small screens
+              textAlign="center"
+              >
+                Career Development Center
         </Text>
 
         <HStack spacing={4} alignItems={"center"}>
