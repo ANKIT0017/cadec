@@ -7,9 +7,11 @@ import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 
 // Importing the option components
-import Home from './components/optionPages/Home.jsx';
-import About from './components/optionPages/About.jsx';
-import Organisation from './components/optionPages/Organisation.jsx';
+
+import Home from './components/optionPages/HomePage.jsx';
+import About from './components/optionPages/AboutCadec.jsx';
+import Organisation from './components/optionPages/Structure.jsx';
+
 import Events from './components/optionPages/Events.jsx';
 import Startup from './components/optionPages/Startup.jsx';
 
@@ -22,7 +24,7 @@ function App() {
   // Use effect to automatically show the description for the "home" option
   useEffect(() => {
     if (selectedOption === 'home') {
-      setShowDescription(true); // Trigger slide in animation when page loads
+      setShowDescription(true); // Trigger slide-in animation when page loads
     }
   }, [selectedOption]);
 
@@ -30,7 +32,10 @@ function App() {
   const handleSelectOption = (option) => {
     setSelectedOption(option);
     setShowDescription(false); // Reset animation when switching options
-    setTimeout(() => setShowDescription(true), 50); // Trigger animation after a short delay
+    setTimeout(() => {
+      setShowDescription(true); // Trigger animation after a short delay
+      window.scrollTo(0, 0); // Scroll to the top of the page when switching options
+    }, 50); // Ensure that the scroll happens after the animation is triggered
   };
 
   // Conditional rendering for each option
@@ -68,7 +73,7 @@ function App() {
       <Box>
         <Flex direction={{ base: 'column', md: 'row' }} align="center" p={5} mr={4}>
           {/* Image section on the left */}
-          <Box flex="2" align="left" mr={4}>
+          <Box flex="3" align="left" mr={4}>
             <Image
               src={options[selectedOption].image}
               alt={selectedOption}
@@ -86,7 +91,7 @@ function App() {
               animate={{ x: showDescription ? 0 : '86%' }}
               transition={{ duration: 0.8 }}
             >
-              <Heading fontStyle={"oblique"} fontFamily={"revert-layer"} Size={"larger"}>
+              <Heading fontStyle={"oblique"} fontFamily={"revert-layer"} Size={"large"}>
                 {options[selectedOption].description}
               </Heading>
             </motion.div>
