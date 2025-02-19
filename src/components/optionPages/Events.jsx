@@ -3,6 +3,7 @@ import { Box, Container, Heading, Text, SimpleGrid, Image, Button, Stack, useCol
 import ProgressBar from '../ProgressBar';
 import Footer from '../Footer';
 
+// Event data
 const events = [
   {
     title: 'Bitblitz 1.0',
@@ -25,15 +26,19 @@ const events = [
     image: '/vite.svg',
     link: '/events/tech-innovators-2025',
   },
-  // Add more events as needed
 ];
 
 const Events = () => {
-  // Define background and text colors based on the current color mode
   const bgColor = useColorModeValue('gray.50', 'gray.800');
   const textColor = useColorModeValue('gray.800', 'gray.50');
   const cardBgColor = useColorModeValue('white', 'gray.700');
   const cardShadow = useColorModeValue('lg', 'dark-lg');
+
+  const isPastDate = (dateString) => {
+    const eventDate = new Date(dateString);
+    const today = new Date();
+    return eventDate < today;
+  };
 
   return (
     <Box py={10} bg={bgColor}>
