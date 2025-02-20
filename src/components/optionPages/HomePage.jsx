@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Image, Box, Text, SimpleGrid } from '@chakra-ui/react';
+import { Container, Box, Text, SimpleGrid, Badge, List, ListItem, ListIcon,Button, Image, HStack, VStack } from '@chakra-ui/react';
 import ProgressBar from '../ProgressBar'; // Import the ProgressBar component
 import Footer from '../Footer';
+import { color } from 'framer-motion';
 const Home = () => {
   return (
     <>
@@ -11,16 +12,57 @@ const Home = () => {
       {/* Main Content */}
       <Container maxW="1200px" mt={5} p={5}>
         {/* Introduction Section */}
-        <Box mb={10} display="flex" alignItems="center" mr={4}>
-          <Image
-            borderRadius="50%"   // This makes the image circular
-            boxSize="150px"       // Adjust size to your preference
-            src="/me.jpg"  // Example image of the society's logo
-            alt="Society Logo"
-            objectFit="cover"     // Ensures the image covers the area within the circle
-          />
-          
-        </Box>
+        {/* Society President and Vice President */}
+              <Box spacing={12} justify="center" mb={10} align="center">
+                <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300" mb={8}>
+                          Core Committee
+                        </Text>
+                {/* President */}
+                <Box align="center" spacing={4} mb={8}>
+                  <Box mb={4}>
+                    <Image
+                      borderRadius="50%"   // This makes the image circular
+                      boxSize="150px"       // Adjust size to your preference
+                      src="/ankit.jpg"         // Example image of the society's logo
+                      alt="Society Logo"
+                      objectFit="cover"     // Ensures the image covers the area within the circle
+                    />
+                  </Box>
+                  <Box justify="center" >
+                    <Text fontSize="2xl" fontWeight="bold">President</Text>
+                    <Text mt={2}>Ankit</Text>
+                  </Box>
+                </Box>
+        
+                {/* Vice President */}
+                <Box align="center" spacing={4} mb={8}>
+                  <Box mb={4}>
+                    <Image
+                      borderRadius="50%"   // This makes the image circular
+                      boxSize="150px"       // Adjust size to your preference
+                      src="/nikhil.jpg"         // Example image of the society's logo
+                      alt="Society Logo"
+                      objectFit="cover"     // Ensures the image covers the area within the circle
+                    />
+                  </Box>
+                  <Box align="center">
+                    <Text fontSize="2xl" fontWeight="bold">Vice President</Text>
+                    <Text mt={2}>Nikhil</Text>
+                  </Box>
+                </Box>
+                <Button
+                  align=""
+                  as="a"
+                  href="/AboutCadec.jsx" 
+                  colorScheme="teal"
+                  variant="outline"
+                  size="sm"
+                  w="auto"
+                  hover={{ bg: 'teal.600' , color: 'black.' }}
+                >
+                  View Core Committee
+                </Button>
+              </Box>
 
         {/* Mission and Vision */}
         <Box mb={10} mr={8}>

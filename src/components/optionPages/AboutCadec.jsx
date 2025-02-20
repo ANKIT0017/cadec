@@ -10,60 +10,107 @@ const About = () => {
     {
       name: 'Tech. Department',
       leader: 'Chetanya garg',
-      coleader: '.',
-      members: ['Ankit kumar', 'Ravi', 'Chaitanya kaushik'],
+      coleader: 'Deeptanu',
+      tl:'Ravi',
+      members: ['Ankit kumar', 'Harsh', 'Chaitanya kaushik'],
       image: '/me.jpg',  // Image specific to Tech Department
     },
     {
       name: 'Entrepreneur Department',
-      leader: '.',
-      coleader: '.',
+      leader: 'Deepak',
+      coleader: 'Yugank',
+      tl:',',
       members: ['Ankit', '.', '.'],
       image: '/entru-img.jpg',  // Image specific to Tech Department
     },
     {
+      name: 'Marketing Department',
+      leader: 'Prakhar',
+      coleader: 'Sanya',
+      tl:',',
+      members: ['Soon', 'Dark', 'Olinez'],
+      image: '/media-img.jpg', // Image specific to Media Department
+    },
+    {
       name: 'Media Department',
-      leader: 'Em',
-      coleader: 'Mic',
+      leader: 'Hariom',
+      coleader: 'Tanuj Pandey',
+      tl:',',
       members: ['Soon', 'Dark', 'Olinez'],
       image: '/media-img.jpg', // Image specific to Media Department
     },
     {
       name: 'Advertising Department',
-      leader: 'Willris',
-      coleader: 'Isng',
+      leader: 'Ankit Yadav',
+      coleader: 'Karan',
+      tl:',',
       members: ['Liee', 'Masonez', 'Lucg'],
       image: '/advert-img.jpg', // Image specific to Advertising Department
     },
     {
       name: 'Organising Department',
-      leader: 'Graor',
-      coleader: 'Sinson',
+      leader: 'Saloni',
+      coleader: 'Drishiti',
+      tl:',',
       members: ['Acott', 'Noaez', 'Amell'],
       image: '/organ-img.jpg', // Image specific to Event Management Department
     },
   ];
-
+// Data for the executive body members
+const faculty = [
+  {
+    name: 'Prof. Krishna Sharma ',
+    post: 'Patron',
+    image: '/principal.png',  // Add image URL for Ankit
+    
+  },
+  {
+    name: 'Dr. Richa Agarwal Malik',
+    post: 'Convenor',
+    image: '/richa.png',  // Add image URL for Ankit
+  },
+  {
+    name: 'Dr. Gaurav kumar ',
+    post: 'Co-Convenor',
+    image: '/gaurav.png',  // Add image URL for Ankit
+  },
+  {
+    name: 'Mrs. Anshita jain',
+    post: 'Mentor',
+    image: '/anshita.png',  // Add image URL for Nikhil
+  },
+ 
+];
   // Data for the executive body members
   const executiveBody = [
     {
-      name: 'name',
-      post: 'post',
+      name: 'Ankit Anand',
+      post: 'President',
+      image: 'ankit.jpg',  // Add image URL for Ankit
+    },
+    {
+      name: 'Nikhil Bhargav',
+      post: 'Vice President',
+      image: '/nikhil.jpg',  // Add image URL for Ankit
+    },
+    {
+      name: 'Naman',
+      post: 'Secretary',
       image: '/londa.jpg',  // Add image URL for Ankit
     },
     {
-      name: 'name',
-      post: '.',
+      name: 'Somil Verma',
+      post: 'Treasurer',
       image: '/somil.jpg',  // Add image URL for Nikhil
     },
     {
-      name: 'name',
-      post: '.',
+      name: 'Smriti Singh',
+      post: 'HR',
       image: '/ladki.jpg',  // Add image URL for Sanya
     },
     {
-      name: '.',
-      post: '.',
+      name: 'Tina',
+      post: 'Joint Secretary',
       image: '/ladki2.jpg',  // Add image URL for Ravi
     },
   ];
@@ -81,49 +128,46 @@ const About = () => {
         </Text>
       </Box>
 
-      {/* Society President and Vice President */}
-      <VStack spacing={12} justify="center" mb={10}>
-        {/* President */}
-        <HStack align="center" spacing={4}>
-          <Box mb={4}>
-            <Image
-              borderRadius="50%"   // This makes the image circular
-              boxSize="150px"       // Adjust size to your preference
-              src="/ankit.jpg"         // Example image of the society's logo
-              alt="Society Logo"
-              objectFit="cover"     // Ensures the image covers the area within the circle
-            />
-          </Box>
-          <VStack align="start">
-            <Text fontSize="2xl" fontWeight="bold">President</Text>
-            <Text mt={2}>Ankit</Text>
-          </VStack>
-        </HStack>
-
-        {/* Vice President */}
-        <HStack align="center" spacing={4}>
-          <Box mb={4}>
-            <Image
-              borderRadius="50%"   // This makes the image circular
-              boxSize="150px"       // Adjust size to your preference
-              src="/nikhil.jpg"         // Example image of the society's logo
-              alt="Society Logo"
-              objectFit="cover"     // Ensures the image covers the area within the circle
-            />
-          </Box>
-          <VStack align="start">
-            <Text fontSize="2xl" fontWeight="bold">Vice President</Text>
-            <Text mt={2}>Nikhil</Text>
-          </VStack>
-        </HStack>
-      </VStack>
-
+      
+      <Box mb={10}>
+        <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300">
+          Faculty
+        </Text>
+        <SimpleGrid columns={[1, 2, 2]} spacing={8} mt={6} align="center">
+          {faculty.map((member, index) => (
+            <Box
+              key={index}
+              p={5}
+              shadow="lg"  // Enhanced shadow effect
+              borderWidth="1px"
+              borderRadius="md"
+              // bg="gray.800"  // Dark background for executive body boxes
+              _hover={{ bg: 'gray.700' }} // Hover effect
+              transition="0.3s ease-in-out"
+            >
+              <Image
+                borderRadius="50%"   // Circular image for the executive body member
+                boxSize="150px"       // Adjust size as needed
+                src={member.image}    // Image specific to the executive body member
+                alt={member.name}
+                objectFit="cover"     // Ensures the image covers the area within the circle
+              />
+              <Text fontSize="xl" fontWeight="bold" color="teal.400" mt={4}>
+                {member.name}
+              </Text>
+              <Text fontSize="lg" color="gray.100">
+                {member.post}
+              </Text>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
       {/* Executive Body Section */}
       <Box mb={10}>
         <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300">
           Executive Body
         </Text>
-        <SimpleGrid columns={[1, 2, 2]} spacing={8} mt={6}>
+        <SimpleGrid columns={[1, 2, 2]} spacing={8} mt={6} align="center">
           {executiveBody.map((member, index) => (
             <Box
               key={index}
@@ -185,10 +229,13 @@ const About = () => {
             {/* Department Leaders and Co-leaders */}
             <Box mt={4}>
               <Text fontWeight="semibold" color="gray.100">
-                Leader: <Badge colorScheme="teal">{department.leader}</Badge>
+                Head: <Badge colorScheme="teal">{department.leader}</Badge>
               </Text>
               <Text fontWeight="semibold" color="gray.100">
-                Co-leader: <Badge colorScheme="teal">{department.coleader}</Badge>
+                Co-Head: <Badge colorScheme="teal">{department.coleader}</Badge>
+              </Text>
+              <Text fontWeight="semibold" color="gray.100">
+                TL: <Badge colorScheme="teal">{department.tl}</Badge>
               </Text>
             </Box>
 
