@@ -35,6 +35,7 @@ const NavBar = () => {
               textAlign="center"
               >
                 Career Development Center
+                
         </Text>
 
         <HStack spacing={4} alignItems={"center"}>

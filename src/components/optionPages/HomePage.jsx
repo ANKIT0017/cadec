@@ -62,7 +62,7 @@ const Home = () => {
       </Container>
 
       {/* Footer Section */}
-      <Footer /> 
+      {/* <Footer />  */}
     </>
   );
 };

@@ -209,7 +209,6 @@ const About = () => {
           </Box>
         ))}
       </SimpleGrid>
-      <Footer/>
     </Container>
   );
 };

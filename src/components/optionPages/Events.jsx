@@ -112,7 +112,6 @@ const Events = () => {
           </Box>
         ))}
       </SimpleGrid>
-      <Footer/>
     </Box>
     
   );

@@ -5,7 +5,7 @@ import Footer from '../Footer';
 
 const Organisation = () => {
   return (
-    <Container minHeight="100vh" display="flex" flexDirection="column">
+    <Container mb={{sm:"130px",md:"130px",lg:"200px"}} display="flex" flexDirection="column">
       {/* Main content Box */}
       <Box
         w="100%"  // Ensure Box takes full width
@@ -28,13 +28,12 @@ const Organisation = () => {
             md: "scaleX(1.6) scaleY(1.5)", // Moderate scaling for medium screens
             lg: "scaleX(2.4) scaleY(1.9)", // More scaling for larger screens
           }}
-          mt={{ md: "4", lg: "8" }} // Responsive margin top for the image
+          mt={{ md: "2", lg: "4" }} // Responsive margin top for the image
           shadow={"dark-lg"} // Shadow effect
         />
       </Box>
 
       {/* Footer Component */}
-      <Footer />
     </Container>
   );
 };

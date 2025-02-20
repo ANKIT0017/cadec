@@ -5,7 +5,6 @@ import NavBar from './components/navbar';
 import { useAppState } from './components/mid';
 import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
-
 // Importing the option components
 
 import Home from './components/optionPages/HomePage.jsx';
@@ -14,6 +13,7 @@ import Organisation from './components/optionPages/Structure.jsx';
 
 import Events from './components/optionPages/Events.jsx';
 import Startup from './components/optionPages/Startup.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   // Getting state and options from mid.jsx
@@ -144,6 +144,7 @@ function App() {
       <Container mt={4} pt={6}>
         {renderContent()}
       </Container>
+      <Footer/>
     </Box>
   );
 }
