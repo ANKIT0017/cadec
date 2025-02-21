@@ -1,134 +1,175 @@
-import React from 'react';
-import { Container, Box, Text, SimpleGrid, Badge, List, ListItem, ListIcon, Image, HStack, VStack } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { 
+  Container, 
+  Box, 
+  Text, 
+  SimpleGrid, 
+  Badge, 
+  List, 
+  ListItem, 
+  ListIcon, 
+  Image, 
+  HStack, 
+  Collapse, 
+  Button 
+} from '@chakra-ui/react';
 import { MdCheckCircle } from 'react-icons/md';
 import ProgressBar from '../ProgressBar';
 import Footer from '../Footer';
 
 const About = () => {
+  // State to manage collapsible sections
+  const [showMembers, setShowMembers] = useState({});
+
+  // Toggle function for show/hide members
+  const toggleMembers = (index) => {
+    setShowMembers((prev) => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   // Data for departments and their members
   const departments = [
     {
       name: 'Tech. Department',
       leader: 'Chetanya garg',
       coleader: 'Deeptanu',
-      tl:'Ravi',
-      members: ['Ankit kumar', 'Harsh', 'Chaitanya kaushik'],
-      image: '/me.jpg',  // Image specific to Tech Department
+      tl: 'Ravi',
+      members: [
+        'Ankit kumar', 'Lakshay Batra', 'Harsh Chaudhary', 'Kuber', 'Jyoti', 
+        'Chaitanya kaushik', 'Akshat', 'Chandan', 'Karan Kandey'
+      ],
+      image: '/me.jpg',
     },
     {
       name: 'Entrepreneur Department',
       leader: 'Deepak',
       coleader: 'Yugank',
-      tl:',',
-      members: ['Ankit', '.', '.'],
-      image: '/entru-img.jpg',  // Image specific to Tech Department
+      tl: 'Arpit Patel',
+      members: [
+        'Shubham Jain', 'Aditya Garg', 'Aakash sangal', 'Aryan prasad', 'Ayush', 
+        'Charanjeet palwar', 'Devanshu Singh', 'Pankaj kumar', 'Sachin', 
+        'Shivansh sharma', 'Sweety', 'Ujjwal Kumar', 'Yash Kumar Singh'
+      ],
+      image: '/entru-img.jpg',
     },
     {
       name: 'Marketing Department',
       leader: 'Prakhar',
       coleader: 'Sanya',
-      tl:',',
-      members: ['Soon', 'Dark', 'Olinez'],
-      image: '/media-img.jpg', // Image specific to Media Department
+      tl: 'NAN',
+      members: [
+        'Daksh Dadhich', 'Gunjan', 'Vansh kukreja', 'Yash Garg', 'Pragya kumari', 
+        'Kushagra jain', 'Yashank Thakur', 'Pratyush Singh', 'Suman kumar', 
+        'Sohil Ali', 'Kabir Sachdeva', 'Sneha Pundhir'
+      ],
+      image: '/media-img.jpg',
     },
     {
       name: 'Media Department',
       leader: 'Hariom',
       coleader: 'Tanuj Pandey',
-      tl:',',
-      members: ['Soon', 'Dark', 'Olinez'],
-      image: '/media-img.jpg', // Image specific to Media Department
+      tl: 'Kavita',
+      members: ['Adarsh', 'Mansi', 'Krishna', 'Aditya'],
+      image: '/media-img.jpg',
     },
     {
       name: 'Advertising Department',
       leader: 'Ankit Yadav',
       coleader: 'Karan',
-      tl:',',
-      members: ['Liee', 'Masonez', 'Lucg'],
-      image: '/advert-img.jpg', // Image specific to Advertising Department
+      tl: 'NAN',
+      members: ['Pankaj', 'Mayank'],
+      image: '/advert-img.jpg',
     },
     {
       name: 'Organising Department',
       leader: 'Saloni',
       coleader: 'Drishiti',
-      tl:',',
-      members: ['Acott', 'Noaez', 'Amell'],
-      image: '/organ-img.jpg', // Image specific to Event Management Department
+      tl: 'NAN',
+      members: [
+        'Himanshu', 'Vinayak Maheshwari', 'Tarun Pillai', 'Rehan Khan', 
+        'Komal yadav', 'Suhani yadav', 'Versha', 'Anurag', 'Mimansha Sharma', 
+        'Divya Goel', 'Krish', 'Mohd. Mudassir', 'Rishikesh Jha'
+      ],
+      image: '/organ-img.jpg',
     },
   ];
-// Data for the executive body members
-const faculty = [
-  {
-    name: 'Prof. Krishna Sharma ',
-    post: 'Patron',
-    image: '/principal.png',  // Add image URL for Ankit
-    
-  },
-  {
-    name: 'Dr. Richa Agarwal Malik',
-    post: 'Convenor',
-    image: '/richa.png',  // Add image URL for Ankit
-  },
-  {
-    name: 'Dr. Gaurav kumar ',
-    post: 'Co-Convenor',
-    image: '/gaurav.png',  // Add image URL for Ankit
-  },
-  {
-    name: 'Mrs. Anshita jain',
-    post: 'Mentor',
-    image: '/anshita.png',  // Add image URL for Nikhil
-  },
- 
-];
+
+  // Data for the faculty members
+  const faculty = [
+    {
+      name: 'Prof. Krishna Sharma',
+      post: 'Patron',
+      image: '/principal.png',
+    },
+    {
+      name: 'Dr. Richa Agarwal Malik',
+      post: 'Convenor',
+      image: '/richa.png',
+    },
+    {
+      name: 'Dr. Gaurav Kumar',
+      post: 'Co-Convenor',
+      image: '/gaurav.png',
+    },
+    {
+      name: 'Mrs. Anshita Jain',
+      post: 'Mentor',
+      image: '/anshita.png',
+    },
+  ];
+
   // Data for the executive body members
   const executiveBody = [
     {
       name: 'Ankit Anand',
       post: 'President',
-      image: 'ankit.jpg',  // Add image URL for Ankit
+      image: 'ankit.jpg',
     },
     {
       name: 'Nikhil Bhargav',
       post: 'Vice President',
-      image: '/nikhil.jpg',  // Add image URL for Ankit
+      image: '/nikhil.jpg',
     },
     {
       name: 'Naman',
       post: 'Secretary',
-      image: '/londa.jpg',  // Add image URL for Ankit
+      image: '/londa.jpg',
     },
     {
       name: 'Somil Verma',
       post: 'Treasurer',
-      image: '/somil.jpg',  // Add image URL for Nikhil
+      image: '/somil.jpg',
     },
     {
       name: 'Smriti Singh',
       post: 'HR',
-      image: '/ladki.jpg',  // Add image URL for Sanya
+      image: '/ladki.jpg',
     },
     {
       name: 'Tina',
       post: 'Joint Secretary',
-      image: '/ladki2.jpg',  // Add image URL for Ravi
+      image: '/ladki2.jpg',
     },
   ];
 
   return (
     <Container maxW="1200px" mt={8} p={5}>
       <ProgressBar />
+      
       {/* About Society Header */}
       <Box mb={10}>
         <Text fontSize="4xl" fontWeight="bold" textAlign="center" color="teal.300">
           About Our Society
         </Text>
         <Text mt={4} fontSize="lg" textAlign="center" color="gray.400">
-          We have various departments that work together to create an engaging, vibrant, and active society. Here's a look at our departments and their teams.
+          We have various departments that work together to create an engaging, vibrant, and active society. 
+          Here's a look at our departments and their teams.
         </Text>
       </Box>
 
-      
+      {/* Faculty Section */}
       <Box mb={10}>
         <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300">
           Faculty
@@ -138,19 +179,18 @@ const faculty = [
             <Box
               key={index}
               p={5}
-              shadow="lg"  // Enhanced shadow effect
+              shadow="lg"
               borderWidth="1px"
               borderRadius="md"
-              // bg="gray.800"  // Dark background for executive body boxes
-              _hover={{ bg: 'gray.700' }} // Hover effect
+              _hover={{ bg: 'gray.700' }}
               transition="0.3s ease-in-out"
             >
               <Image
-                borderRadius="50%"   // Circular image for the executive body member
-                boxSize="150px"       // Adjust size as needed
-                src={member.image}    // Image specific to the executive body member
+                borderRadius="50%"
+                boxSize="150px"
+                src={member.image}
                 alt={member.name}
-                objectFit="cover"     // Ensures the image covers the area within the circle
+                objectFit="cover"
               />
               <Text fontSize="xl" fontWeight="bold" color="teal.400" mt={4}>
                 {member.name}
@@ -162,6 +202,7 @@ const faculty = [
           ))}
         </SimpleGrid>
       </Box>
+
       {/* Executive Body Section */}
       <Box mb={10}>
         <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300">
@@ -172,19 +213,18 @@ const faculty = [
             <Box
               key={index}
               p={5}
-              shadow="lg"  // Enhanced shadow effect
+              shadow="lg"
               borderWidth="1px"
               borderRadius="md"
-              // bg="gray.800"  // Dark background for executive body boxes
-              _hover={{ bg: 'gray.700' }} // Hover effect
+              _hover={{ bg: 'gray.700' }}
               transition="0.3s ease-in-out"
             >
               <Image
-                borderRadius="50%"   // Circular image for the executive body member
-                boxSize="150px"       // Adjust size as needed
-                src={member.image}    // Image specific to the executive body member
+                borderRadius="50%"
+                boxSize="150px"
+                src={member.image}
                 alt={member.name}
-                objectFit="cover"     // Ensures the image covers the area within the circle
+                objectFit="cover"
               />
               <Text fontSize="xl" fontWeight="bold" color="teal.400" mt={4}>
                 {member.name}
@@ -203,11 +243,11 @@ const faculty = [
           <Box
             key={index}
             p={5}
-            shadow="lg"  // Enhanced shadow effect for department cards
+            shadow="lg"
             borderWidth="1px"
             borderRadius="md"
-            bg="gray.800"  // Dark background for department boxes
-            _hover={{ bg: 'gray.700' }} // Hover effect
+            bg="gray.800"
+            _hover={{ bg: 'gray.700' }}
             transition="0.3s ease-in-out"
           >
             <Text fontSize="2xl" fontWeight="bold" color="teal.400">
@@ -220,13 +260,13 @@ const faculty = [
                 borderRadius="8px"
                 width="100%"
                 height="100%"
-                src={department.image}  // Using the department-specific image
+                src={department.image}
                 alt={`${department.name} Image`}
                 objectFit="cover"
               />
             </Box>
 
-            {/* Department Leaders and Co-leaders */}
+            {/* Department Leaders */}
             <Box mt={4}>
               <Text fontWeight="semibold" color="gray.100">
                 Head: <Badge colorScheme="teal">{department.leader}</Badge>
@@ -239,19 +279,30 @@ const faculty = [
               </Text>
             </Box>
 
-            {/* Department Members */}
+            {/* Collapsible Members List */}
             <Box mt={4}>
               <Text fontWeight="semibold" color="gray.100">Members:</Text>
-              <List spacing={2}>
-                {department.members.map((member, index) => (
-                  <ListItem key={index}>
-                    <HStack>
-                      <ListIcon as={MdCheckCircle} color="teal.500" />
-                      <Text color="gray.100">{member}</Text> {/* Added color to the member names */}
-                    </HStack>
-                  </ListItem>
-                ))}
-              </List>
+              <Collapse in={showMembers[index]} startingHeight={100}>
+                <List spacing={2}>
+                  {department.members.map((member, memberIndex) => (
+                    <ListItem key={memberIndex}>
+                      <HStack>
+                        <ListIcon as={MdCheckCircle} color="teal.500" />
+                        <Text color="gray.100">{member}</Text>
+                      </HStack>
+                    </ListItem>
+                  ))}
+                </List>
+              </Collapse>
+              <Button
+                size="sm"
+                mt={2}
+                onClick={() => toggleMembers(index)}
+                colorScheme="teal"
+                variant="link"
+              >
+                {showMembers[index] ? 'Show Less' : 'Show More'}
+              </Button>
             </Box>
           </Box>
         ))}
