@@ -58,7 +58,7 @@ const About = () => {
       name: 'Marketing Department',
       leader: 'Prakhar',
       coleader: 'Sanya',
-      tl: 'NAN',
+      tl: 'Sneha',
       members: [
         'Daksh Dadhich', 'Gunjan', 'Vansh kukreja', 'Yash Garg', 'Pragya kumari', 
         'Kushagra jain', 'Yashank Thakur', 'Pratyush Singh', 'Suman kumar', 
