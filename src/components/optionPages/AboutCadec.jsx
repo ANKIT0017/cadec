@@ -1,146 +1,230 @@
-import React from 'react';
-import { Container, Box, Text, SimpleGrid, Badge, List, ListItem, ListIcon, Image, HStack, VStack } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { 
+  Container, 
+  Box, 
+  Text, 
+  SimpleGrid, 
+  Badge, 
+  List, 
+  ListItem, 
+  ListIcon, 
+  Image, 
+  HStack, 
+  Collapse, 
+  Button 
+} from '@chakra-ui/react';
 import { MdCheckCircle } from 'react-icons/md';
 import ProgressBar from '../ProgressBar';
 import Footer from '../Footer';
 
 const About = () => {
+  // State to manage collapsible sections
+  const [showMembers, setShowMembers] = useState({});
+
+  // Toggle function for show/hide members
+  const toggleMembers = (index) => {
+    setShowMembers((prev) => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   // Data for departments and their members
   const departments = [
     {
       name: 'Tech. Department',
       leader: 'Chetanya garg',
-      coleader: '.',
-      members: ['Ankit kumar', 'Ravi', 'Chaitanya kaushik'],
-      image: '/me.jpg',  // Image specific to Tech Department
+      coleader: 'Deeptanu',
+      tl: 'Ravi',
+      members: [
+        'Ankit kumar', 'Lakshay Batra', 'Harsh Chaudhary', 'Kuber', 'Jyoti', 
+        'Chaitanya kaushik', 'Akshat', 'Chandan', 'Karan Kandey'
+      ],
+      image: '/me.jpg',
     },
     {
       name: 'Entrepreneur Department',
-      leader: '.',
-      coleader: '.',
-      members: ['Ankit', '.', '.'],
-      image: '/entru-img.jpg',  // Image specific to Tech Department
+      leader: 'Deepak',
+      coleader: 'Yugank',
+      tl: 'Arpit Patel',
+      members: [
+        'Shubham Jain', 'Aditya Garg', 'Aakash sangal', 'Aryan prasad', 'Ayush', 
+        'Charanjeet palwar', 'Devanshu Singh', 'Pankaj kumar', 'Sachin', 
+        'Shivansh sharma', 'Sweety', 'Ujjwal Kumar', 'Yash Kumar Singh'
+      ],
+      image: '/entru-img.jpg',
+    },
+    {
+      name: 'Marketing Department',
+      leader: 'Prakhar',
+      coleader: 'Sanya',
+      tl: 'Sneha',
+      members: [
+        'Daksh Dadhich', 'Gunjan', 'Vansh kukreja', 'Yash Garg', 'Pragya kumari', 
+        'Kushagra jain', 'Yashank Thakur', 'Pratyush Singh', 'Suman kumar', 
+        'Sohil Ali', 'Kabir Sachdeva', 'Sneha Pundhir'
+      ],
+      image: '/media-img.jpg',
     },
     {
       name: 'Media Department',
-      leader: 'Em',
-      coleader: 'Mic',
-      members: ['Soon', 'Dark', 'Olinez'],
-      image: '/media-img.jpg', // Image specific to Media Department
+      leader: 'Hariom',
+      coleader: 'Tanuj Pandey',
+      tl: 'Kavita',
+      members: ['Adarsh', 'Mansi', 'Krishna', 'Aditya'],
+      image: '/media-img.jpg',
     },
     {
       name: 'Advertising Department',
-      leader: 'Willris',
-      coleader: 'Isng',
-      members: ['Liee', 'Masonez', 'Lucg'],
-      image: '/advert-img.jpg', // Image specific to Advertising Department
+      leader: 'Ankit Yadav',
+      coleader: 'Karan',
+      tl: 'NAN',
+      members: ['Pankaj', 'Mayank'],
+      image: '/advert-img.jpg',
     },
     {
       name: 'Organising Department',
-      leader: 'Graor',
-      coleader: 'Sinson',
-      members: ['Acott', 'Noaez', 'Amell'],
-      image: '/organ-img.jpg', // Image specific to Event Management Department
+      leader: 'Saloni',
+      coleader: 'Drishiti',
+      tl: 'NAN',
+      members: [
+        'Himanshu', 'Vinayak Maheshwari', 'Tarun Pillai', 'Rehan Khan', 
+        'Komal yadav', 'Suhani yadav', 'Versha', 'Anurag', 'Mimansha Sharma', 
+        'Divya Goel', 'Krish', 'Mohd. Mudassir', 'Rishikesh Jha'
+      ],
+      image: '/organ-img.jpg',
+    },
+  ];
+
+  // Data for the faculty members
+  const faculty = [
+    {
+      name: 'Prof. Krishna Sharma',
+      post: 'Patron',
+      image: '/principal.png',
+    },
+    {
+      name: 'Dr. Richa Agarwal Malik',
+      post: 'Convenor',
+      image: '/richa.png',
+    },
+    {
+      name: 'Dr. Gaurav Kumar',
+      post: 'Co-Convenor',
+      image: '/gaurav.png',
+    },
+    {
+      name: 'Mrs. Anshita Jain',
+      post: 'Mentor',
+      image: '/anshita.png',
     },
   ];
 
   // Data for the executive body members
   const executiveBody = [
     {
-      name: 'name',
-      post: 'post',
-      image: '/londa.jpg',  // Add image URL for Ankit
+      name: 'Ankit Anand',
+      post: 'President',
+      image: 'ankit.jpg',
     },
     {
-      name: 'name',
-      post: '.',
-      image: '/somil.jpg',  // Add image URL for Nikhil
+      name: 'Nikhil Bhargav',
+      post: 'Vice President',
+      image: '/nikhil.jpg',
     },
     {
-      name: 'name',
-      post: '.',
-      image: '/ladki.jpg',  // Add image URL for Sanya
+      name: 'Naman',
+      post: 'Secretary',
+      image: '/londa.jpg',
     },
     {
-      name: '.',
-      post: '.',
-      image: '/ladki2.jpg',  // Add image URL for Ravi
+      name: 'Somil Verma',
+      post: 'Treasurer',
+      image: '/somil.jpg',
+    },
+    {
+      name: 'Smriti Singh',
+      post: 'HR',
+      image: '/ladki.jpg',
+    },
+    {
+      name: 'Tina',
+      post: 'Joint Secretary',
+      image: '/ladki2.jpg',
     },
   ];
 
   return (
     <Container maxW="1200px" mt={8} p={5}>
       <ProgressBar />
+      
       {/* About Society Header */}
       <Box mb={10}>
         <Text fontSize="4xl" fontWeight="bold" textAlign="center" color="teal.300">
           About Our Society
         </Text>
         <Text mt={4} fontSize="lg" textAlign="center" color="gray.400">
-          We have various departments that work together to create an engaging, vibrant, and active society. Here's a look at our departments and their teams.
+          We have various departments that work together to create an engaging, vibrant, and active society. 
+          Here's a look at our departments and their teams.
         </Text>
       </Box>
 
-      {/* Society President and Vice President */}
-      <VStack spacing={12} justify="center" mb={10}>
-        {/* President */}
-        <HStack align="center" spacing={4}>
-          <Box mb={4}>
-            <Image
-              borderRadius="50%"   // This makes the image circular
-              boxSize="150px"       // Adjust size to your preference
-              src="/ankit.jpg"         // Example image of the society's logo
-              alt="Society Logo"
-              objectFit="cover"     // Ensures the image covers the area within the circle
-            />
-          </Box>
-          <VStack align="start">
-            <Text fontSize="2xl" fontWeight="bold">President</Text>
-            <Text mt={2}>Ankit</Text>
-          </VStack>
-        </HStack>
-
-        {/* Vice President */}
-        <HStack align="center" spacing={4}>
-          <Box mb={4}>
-            <Image
-              borderRadius="50%"   // This makes the image circular
-              boxSize="150px"       // Adjust size to your preference
-              src="/nikhil.jpg"         // Example image of the society's logo
-              alt="Society Logo"
-              objectFit="cover"     // Ensures the image covers the area within the circle
-            />
-          </Box>
-          <VStack align="start">
-            <Text fontSize="2xl" fontWeight="bold">Vice President</Text>
-            <Text mt={2}>Nikhil</Text>
-          </VStack>
-        </HStack>
-      </VStack>
+      {/* Faculty Section */}
+      <Box mb={10}>
+        <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300">
+          Faculty
+        </Text>
+        <SimpleGrid columns={[1, 2, 2]} spacing={8} mt={6} align="center">
+          {faculty.map((member, index) => (
+            <Box
+              key={index}
+              p={5}
+              shadow="lg"
+              borderWidth="1px"
+              borderRadius="md"
+              _hover={{ bg: 'gray.700' }}
+              transition="0.3s ease-in-out"
+            >
+              <Image
+                borderRadius="50%"
+                boxSize="150px"
+                src={member.image}
+                alt={member.name}
+                objectFit="cover"
+              />
+              <Text fontSize="xl" fontWeight="bold" color="teal.400" mt={4}>
+                {member.name}
+              </Text>
+              <Text fontSize="lg" color="gray.100">
+                {member.post}
+              </Text>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
 
       {/* Executive Body Section */}
       <Box mb={10}>
         <Text fontSize="3xl" fontWeight="bold" textAlign="center" color="teal.300">
           Executive Body
         </Text>
-        <SimpleGrid columns={[1, 2, 2]} spacing={8} mt={6}>
+        <SimpleGrid columns={[1, 2, 2]} spacing={8} mt={6} align="center">
           {executiveBody.map((member, index) => (
             <Box
               key={index}
               p={5}
-              shadow="lg"  // Enhanced shadow effect
+              shadow="lg"
               borderWidth="1px"
               borderRadius="md"
-              // bg="gray.800"  // Dark background for executive body boxes
-              _hover={{ bg: 'gray.700' }} // Hover effect
+              _hover={{ bg: 'gray.700' }}
               transition="0.3s ease-in-out"
             >
               <Image
-                borderRadius="50%"   // Circular image for the executive body member
-                boxSize="150px"       // Adjust size as needed
-                src={member.image}    // Image specific to the executive body member
+                borderRadius="50%"
+                boxSize="150px"
+                src={member.image}
                 alt={member.name}
-                objectFit="cover"     // Ensures the image covers the area within the circle
+                objectFit="cover"
               />
               <Text fontSize="xl" fontWeight="bold" color="teal.400" mt={4}>
                 {member.name}
@@ -159,11 +243,11 @@ const About = () => {
           <Box
             key={index}
             p={5}
-            shadow="lg"  // Enhanced shadow effect for department cards
+            shadow="lg"
             borderWidth="1px"
             borderRadius="md"
-            bg="gray.800"  // Dark background for department boxes
-            _hover={{ bg: 'gray.700' }} // Hover effect
+            bg="gray.800"
+            _hover={{ bg: 'gray.700' }}
             transition="0.3s ease-in-out"
           >
             <Text fontSize="2xl" fontWeight="bold" color="teal.400">
@@ -176,35 +260,49 @@ const About = () => {
                 borderRadius="8px"
                 width="100%"
                 height="100%"
-                src={department.image}  // Using the department-specific image
+                src={department.image}
                 alt={`${department.name} Image`}
                 objectFit="cover"
               />
             </Box>
 
-            {/* Department Leaders and Co-leaders */}
+            {/* Department Leaders */}
             <Box mt={4}>
               <Text fontWeight="semibold" color="gray.100">
-                Leader: <Badge colorScheme="teal">{department.leader}</Badge>
+                Head: <Badge colorScheme="teal">{department.leader}</Badge>
               </Text>
               <Text fontWeight="semibold" color="gray.100">
-                Co-leader: <Badge colorScheme="teal">{department.coleader}</Badge>
+                Co-Head: <Badge colorScheme="teal">{department.coleader}</Badge>
+              </Text>
+              <Text fontWeight="semibold" color="gray.100">
+                TL: <Badge colorScheme="teal">{department.tl}</Badge>
               </Text>
             </Box>
 
-            {/* Department Members */}
+            {/* Collapsible Members List */}
             <Box mt={4}>
               <Text fontWeight="semibold" color="gray.100">Members:</Text>
-              <List spacing={2}>
-                {department.members.map((member, index) => (
-                  <ListItem key={index}>
-                    <HStack>
-                      <ListIcon as={MdCheckCircle} color="teal.500" />
-                      <Text color="gray.100">{member}</Text> {/* Added color to the member names */}
-                    </HStack>
-                  </ListItem>
-                ))}
-              </List>
+              <Collapse in={showMembers[index]} startingHeight={100}>
+                <List spacing={2}>
+                  {department.members.map((member, memberIndex) => (
+                    <ListItem key={memberIndex}>
+                      <HStack>
+                        <ListIcon as={MdCheckCircle} color="teal.500" />
+                        <Text color="gray.100">{member}</Text>
+                      </HStack>
+                    </ListItem>
+                  ))}
+                </List>
+              </Collapse>
+              <Button
+                size="sm"
+                mt={2}
+                onClick={() => toggleMembers(index)}
+                colorScheme="teal"
+                variant="link"
+              >
+                {showMembers[index] ? 'Show Less' : 'Show More'}
+              </Button>
             </Box>
           </Box>
         ))}

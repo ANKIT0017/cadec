@@ -11,14 +11,14 @@ const Footer = () => {
         {/* Additional Info Section */}
         <VStack align="center" flex={1} mb={{ base: 4, md: 0 }} textAlign={{ base: 'center', md: 'left' }}>
           <HStack>
-            <Image src="/logosvg.svg" alt="Logo" boxSize={{ base: "30px", sm: "50px" }} pt={1} objectFit="cover" />
+            <Image src="/logosvg.svg" alt="Logo" boxSize={{ base: "90px", sm: "100px" }} pt={1} objectFit="contain" />
             <Text
               fontSize={{ base: "20", sm: "20" }}
               fontWeight="bold"
               bgGradient="linear(to-r, orange.500, red.700)"
               bgClip="text"
             >
-              Career Development Center
+              Career<br/> Development<br/> Center
             </Text>
           </HStack>
           <Text fontSize="sm" mt={2}>
