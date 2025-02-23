@@ -3,45 +3,73 @@ import { Box, Heading, Text, Image, SimpleGrid, Link, VStack } from '@chakra-ui/
 
 const startups = [
   {
-    logo: '/2.png', // Replace with actual image path
+    logo: '/startup/hust.jpg', // Replace with actual image path
+    name: 'Hustle Express',
+    founderImage: '/startup/satya.jpg', // Replace with actual image path
+    founderName: 'Satya',
+    contactLink: 'https://www.littlemove.in/',
+  },
+  {
+    logo: '/startup/gama.jpg', // Replace with actual image path
+    name: 'Gama',
+    founderImage: '/startup/subh.jpg', // Replace with actual image path
+    founderName: 'Shubham jain',
+    contactLink: 'https://www.littlemove.in/',
+  },
+  {
+    logo: '/startup/shri.jpg', // Replace with actual image path
+    name: 'ShriJi Gavya',
+    founderImage: '/nikhil.jpg', // Replace with actual image path
+    founderName: 'Nikhil',
+    contactLink: 'https://www.littlemove.in/',
+  },
+  {
+    logo: '/startup/little.png', // Replace with actual image path
     name: 'Little Move',
-    founderImage: '/richa.png', // Replace with actual image path
+    founderImage: '/startup/little.jpg', // Replace with actual image path
     founderName: 'Versha',
     contactLink: 'https://www.littlemove.in/',
   },
   {
-    logo: '/2.png', // Replace with actual image path
-    name: 'Little Move',
-    founderImage: '/richa.png', // Replace with actual image path
-    founderName: 'Versha',
+    logo: '/startup/gg.jpg', // Replace with actual image path
+    name: 'Gossip Gifting',
+    founderImage: '/startup/mansa.jpg', // Replace with actual image path
+    founderName: 'Mansa',
     contactLink: 'https://www.littlemove.in/',
   },
   {
-    logo: '/2.png', // Replace with actual image path
-    name: 'Little Move',
-    founderImage: '/richa.png', // Replace with actual image path
-    founderName: 'Versha',
+    logo: '/startup/siks.jpg', // Replace with actual image path
+    name: 'Siksakah',
+    founderImage: '/startup/khus.jpg', // Replace with actual image path
+    founderName: 'Khusi',
     contactLink: 'https://www.littlemove.in/',
   },
   {
-    logo: '/2.png', // Replace with actual image path
-    name: 'Little Move',
-    founderImage: '/richa.png', // Replace with actual image path
-    founderName: 'Versha',
+    logo: '/startup/bon.jpg', // Replace with actual image path
+    name: 'Bliss bonzai',
+    founderImage: '/startup/priy.jpg', // Replace with actual image path
+    founderName: 'Priyanka',
     contactLink: 'https://www.littlemove.in/',
   },
   {
-    logo: '/2.png', // Replace with actual image path
-    name: 'Little Move',
-    founderImage: '/richa.png', // Replace with actual image path
-    founderName: 'Versha',
+    logo: '/startup/spl.jpg', // Replace with actual image path
+    name: 'Splashwall',
+    founderImage: '/startup/adit.jpg', // Replace with actual image path
+    founderName: 'Aaditya',
     contactLink: 'https://www.littlemove.in/',
   },
   {
-    logo: '/2.png', // Replace with actual image path
-    name: 'Little Move',
-    founderImage: '/richa.png', // Replace with actual image path
-    founderName: 'Versha',
+    logo: '/startup/well.jpg', // Replace with actual image path
+    name: 'Staywell',
+    founderImage: '/startup/deeva.jpg', // Replace with actual image path
+    founderName: 'Deevanshu',
+    contactLink: 'https://www.littlemove.in/',
+  },
+  {
+    logo: '/startup/bharat.jpg', // Replace with actual image path
+    name: 'Bharat Bites',
+    founderImage: '/startup/sachin.jpg', // Replace with actual image path
+    founderName: 'Sachin',
     contactLink: 'https://www.littlemove.in/',
   },
 ];
@@ -62,6 +90,7 @@ const StartupGallery = () => {
             overflow="hidden"
             textAlign="center"
             boxShadow="lg"
+            h="300px"
             position="relative"
             _hover={{ transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' }}
             role="group" // Add group role for hover effect
@@ -90,7 +119,8 @@ const StartupGallery = () => {
               bg={`url(${startup.founderImage})`} // Founder image as background
               backgroundSize="cover" // Ensure the image covers the entire box
               backgroundPosition="center" // Center the background image
-              p={6}
+              p={4}
+              h="80%"
               transform="translateY(100%)"
               transition="transform 0.3s ease-in-out"
               _groupHover={{ transform: 'translateY(0)' }} // Use _groupHover for child hover effect
@@ -98,28 +128,31 @@ const StartupGallery = () => {
             >
               {/* Overlay to make text readable */}
               <Box
-                bg="rgba(255, 255, 255, 0.05)" // Semi-transparent white overlay
+                bg="rgba(255, 255, 255, 0.001)" // Semi-transparent white overlay
                 borderRadius="lg"
                 p={4}
-                pt="50%"
+                pt="100px"
+                h="210px"
                 border="solid"
                 borderBlockEndColor="gold"
               >
-                <VStack spacing={2} >
-                  <Text fontSize="xl" color="black" fontWeight="bold" >
-                    {startup.founderName}
-                  </Text>
-                </VStack>
+                <Box p={1} bg="#36454F" borderRadius={5}>
+                  <VStack spacing={2} >
+                    <Text fontSize="xl" color="black" fontWeight="bold" >
+                      {startup.founderName}
+                    </Text>
+                  </VStack>
 
-                <Link
-                  href={startup.contactLink}
-                  isExternal
-                  color="teal.300"
-                  fontWeight="bold"
-                  _hover={{ textDecoration: 'underline' }}
-                >
-                  Contact {startup.name}
-                </Link>
+                  <Link
+                    href={startup.contactLink}
+                    isExternal
+                    color="teal.300"
+                    fontWeight="bold"
+                    _hover={{ textDecoration: 'underline' }}
+                  >
+                    Contact {startup.name}
+                  </Link>
+                </Box>
               </Box>
             </Box>
           </Box>
