@@ -68,9 +68,9 @@ const Footer = () => {
             height: "100%",
             zIndex: 0,
             filter: "blur(9px)",
-            backgroundImage: "conic-gradient( #1976ed 75%,rgb(24, 27, 30) 75%,rgb(17, 17, 18) 75%, #1976ed 75%)",
-            animation: "rotateBorder 5s linear infinite",
-            borderRadius: "20%",
+            backgroundImage: "conic-gradient(rgb(255, 0, 229) 75%,rgb(255, 0, 0) 75%,rgb(228, 228, 255) 75%,rgb(255, 0, 0) 75%)",
+            animation: "rotateBorder 0.1s linear infinite",
+            borderRadius: "2%",
           }}
         ></Box>
 
@@ -86,7 +86,7 @@ const Footer = () => {
             background: "#292a2e",
           }}
         >
-          <HStack spacing={4} justify="center">
+          <HStack spacing={4} justify="center" alignContent={"center"}>
             <Text fontSize="sm" fontWeight="bold" mb={3}>
               Developer
             </Text>
